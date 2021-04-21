@@ -1,0 +1,42 @@
+.Button{
+    display: flex;
+    border: 1px solid #828282;
+    border-radius: 12px;
+    align-content: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 130px;
+}
+
+.Button h4{
+    display: flex;
+    margin: unset;
+    font-size: 16px;
+    align-items: center;
+}
+
+.incrementButton, .decrementButton{
+    padding: 0;
+    border: 0;
+    width: 19px;
+    height: 19px;
+    background-color: #E0E0E0;
+    border-radius: 4px;
+    color: #828282;
+    margin: 14px 10px;
+}
+
+.incrementButton:hover , .decrementButton:hover {
+    background-color: #a09c9c;
+    color: #fafafa;
+    transition: all 200ms ease-in-out;
+    cursor: pointer;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+.incrementButton:disabled, .decrementButton:disabled {
+    background-color: #727070;
+    color: #F2F2F2;
+    transition: all 200ms ease-in-out;
+    cursor: not-allowed;
+}

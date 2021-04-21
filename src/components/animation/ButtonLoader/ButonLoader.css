@@ -1,0 +1,16 @@
+
+.fas {
+    animation: mymove infinite 0.5s linear;
+    display: list-item;
+}
+
+
+
+@keyframes mymove {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  } 

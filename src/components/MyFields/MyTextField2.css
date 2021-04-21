@@ -1,0 +1,78 @@
+.root{
+    --primary-color: #828282;
+}
+
+.formField input{
+    all: unset;   
+    font-size: 12px;
+}
+
+.formField{
+    position: relative;
+}
+
+.formField i{
+    position: absolute;
+    top: 25px;
+    left: 12px;
+}
+
+.formField label {
+    font-size: clamp(12px, 2vw, 10px);
+}
+
+.formField input{
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    box-sizing: border-box;
+    cursor: default;
+    outline: none;
+    transition: all 200ms ease;
+}
+
+
+.formField input:-webkit-autofill,
+.formField input:-webkit-autofill:hover, 
+.formField input:-webkit-autofill:focus, 
+.formField input:-webkit-autofill:active
+{
+ -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+
+/* .formField {
+    display: flex;
+    line-height: 1.5;
+    font-size: 1rem;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    box-sizing: border-box;
+    cursor: default;
+    outline: none;
+    padding: 8px 52px 8px 10px;
+    transition: all 200ms ease;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+} */
+
+
+.location .formField i{
+    top: 26px;
+}
+
+input:focus{
+    border-color: dodgerBlue;
+}
+
+.hasError input{
+    border-color: rgb(224, 44, 44);
+}
+
+
+.formField p{
+    color: rgb(224, 44, 44);
+    font-size: clamp(12px, 2vw,14px);
+    display: flex;
+}

@@ -1,0 +1,65 @@
+.forms{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    padding-left: 14px;
+    padding-right: 14px;
+    height: 100%;
+}
+
+.inputField input{
+    width: 100%;
+}
+
+.inputField p {
+    text-align: center;
+}
+
+.location{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+.location .inputField{
+    width: 48%;
+}
+
+.inputField{
+    margin-bottom: 14px;
+}
+
+.inputBase, .inputBase input{
+    border-radius: 12px !important;
+    min-height: 40px !important;
+}
+
+@media (max-width: 345px){
+    .location{
+        flex-direction: column;
+    }
+
+    .location .inputField{
+        width: 100%;
+    }
+}
+
+.shippingInformation{
+    margin-top: 48px;
+}
+
+.contactInformation{
+    margin-top: 0;
+}
+
+h3{
+    font-size: clamp(14px, 2vw, 16px);
+    color: #333333;
+}
+
+
+.inputBase input, .selected-value{  
+    padding: 4px 8px 4px 44px!important;
+}
+
