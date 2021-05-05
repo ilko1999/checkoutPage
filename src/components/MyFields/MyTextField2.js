@@ -16,7 +16,7 @@ function MyTextField2({ placeholder, ...props }) {
         <input id={props.id} {...field} placeholder={placeholder} />
         <i>{props.children}</i>
       </div>
-      <p>{errorText}</p>
+      {errorText ? <p>{errorText}</p> : null}
     </div>
   );
 }

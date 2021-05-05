@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import Product from '../Product/Product';
 import { ProductContext } from '../../context/ProductProvider';
 import './Products.css';
+import {Redirect } from 'react-router-dom';
 
 function Products() {
   const { products } = useContext(ProductContext);
@@ -15,10 +16,11 @@ function Products() {
   return (
     <div className="productsContainer">
       {products && products?.length !== 0
-        ? products.map((product, index) => (
+        ? 
+        products.map((product, index) => (
             <Product item={product} key={index} />
           ))
-        : 'no data'}
+        : 'nodata'}
 
       <div className="cartInfo">
         <hr />

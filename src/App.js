@@ -1,18 +1,21 @@
 import React from 'react';
-import Products from './components/Products/Products';
+
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 import { ProductProvider } from './context/ProductProvider';
-import Forms from './components/Forms/Forms';
-import './App.css';
+import NoDataPage from './pages/NoDataPage';
+import PageWithData from './pages/PageWithData';
 
 function App() {
+  
   return (
-    <ProductProvider>
-      <h1>Checkout</h1>
-      <div className="wrapper">
-        <Products />
-        <Forms />
-      </div>
-    </ProductProvider>
+    <Router>
+      <ProductProvider>
+      {JSON.parse(window.localStorage.getItem('cardData')) === [] ? <h1>Checkout</h1> : null}
+        <Route exact path='/nodata' component={NoDataPage}/>
+        <Route exact path='/data' component={PageWithData}/>
+        <p>created by iliyan</p>
+        </ProductProvider>
+    </Router>
   );
 }
 

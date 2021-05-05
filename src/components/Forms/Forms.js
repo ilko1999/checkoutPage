@@ -3,7 +3,8 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext, useState } from 'react';
 import { Formik, Form } from 'formik';
-import * as yup from 'yup';
+
+import validationSchema from '../../utils/validations'
 
 import {
   EmailRounded,
@@ -11,19 +12,16 @@ import {
   PersonRounded,
   HouseRounded,
   MarkunreadMailboxRounded,
+  LocationCityRounded
 } from '@material-ui/icons';
 
 import { ProductContext } from '../../context/ProductProvider';
 import MyCheckbox from '../MyFields/MyCheckbox';
-import { regexGetBasedOnCountry } from '../../utils/index';
 import MyTextField2 from '../MyFields/MyTextField2';
 import './Forms.css';
 import Dropdown from '../MyFields/Dropdown';
 import MyButton from '../MyFields/MyButton/MyButton';
 import ButtonLoader from '../animation/ButtonLoader/ButtonLoader';
-
-const phoneRegex = /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/;
-const fullNameRegex = /^([a-zA-Z]{2,}\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)/;
 
 function Forms() {
   const { countries, products } = useContext(ProductContext);
@@ -46,44 +44,7 @@ function Forms() {
       });
   };
 
-  const imitateSendingReq = () => {
-    setTimeout(function () {
-      console.log('Sending the data.');
-    }, 3000);
-    location.reload();
-    return false;
-  };
-
   const [loading, setLoading] = useState(false);
-
-  const validationSchema = yup.object({
-    email: yup
-      .string()
-      .required()
-      .email('It must be a valid email!')
-      .label('Email'),
-    phoneNumber: yup
-      .string()
-      .required()
-      .matches(phoneRegex, 'Phone number is not valid')
-      .label('Phone'),
-    fullName: yup
-      .string()
-      .required()
-      .matches(fullNameRegex, 'It must be a valid fullname.')
-      .label('Full name'),
-    address: yup.string().required().label('Adress'),
-    country: yup.string().required().label('Country'),
-    postalCode: yup
-      .string()
-      .required()
-      .label('Postal Code')
-      .when('country', (country, schema) => {
-        const result = regexGetBasedOnCountry(country);
-
-        return schema.matches(result, `Postal code doesnt match ${country}.`);
-      }),
-  });
 
   return (
     <div className="forms">
@@ -98,16 +59,20 @@ function Forms() {
           country: '',
           postalCode: '',
           address: '',
+          city: ''
         }}
         onSubmit={(data, { setSubmitting }) => {
           setSubmitting(true);
-          // do async
-          alert(JSON.stringify(data, null, 2));
+          setTimeout(() => {
+            setSubmitting(false);
+            alert(JSON.stringify(data, null, 2));
+            window.location.reload();
+          }, 1000);
         }}
         validateOnBlur
         validationSchema={validationSchema}
       >
-        {({ values, errors, dirty, isValid }) => (
+        {({  dirty, isValid, isSubmitting }) => (
           <Form>
             <h3 className="contactInformation">Contact information</h3>
             <div className="inputField">
@@ -122,7 +87,6 @@ function Forms() {
             </div>
 
             <div className="inputField">
-              {/* <PhoneRounded /> */}
               <MyTextField2
                 placeholder="Enter your phone number..."
                 name="phoneNumber"
@@ -157,6 +121,17 @@ function Forms() {
               </MyTextField2>
             </div>
 
+            <div className="inputField">
+              <MyTextField2
+                placeholder="Enter your city..."
+                name="city"
+                type="input"
+                id="City"
+              >
+                <LocationCityRounded style={{ fill: '#828282' }} />
+              </MyTextField2>
+            </div>
+
             <div className="location">
               <div className="inputField">
                 <Dropdown
@@ -184,15 +159,11 @@ function Forms() {
 
             <div className="submitButton">
               <MyButton
-                onClick={() => {
-                  imitateSendingReq();
-                  setLoading(true);
-                }}
                 disabled={!dirty || !isValid}
+                isLoading={isSubmitting}
                 type="submit"
-              >
-                {loading ? <ButtonLoader /> : 'Continue'}
-              </MyButton>
+              />
+                
             </div>
 
             {/* <pre>{JSON.stringify(values, null, 2)}</pre>

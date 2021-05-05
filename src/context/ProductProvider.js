@@ -1,5 +1,6 @@
 /* eslint-disable no-param-reassign */
 import React, { useState, createContext, useEffect } from 'react';
+import { Redirect, useHistory } from 'react-router';
 import data from '../data/data.json';
 
 export const ProductContext = createContext();
@@ -13,9 +14,27 @@ export const ProductProvider = ({ children }) => {
   const countriesURL =
     'https://restcountries.eu/rest/v2/all?fields=name;alpha2Code';
 
+    let history = useHistory();
+    useEffect(() => {
+      const storage = JSON.parse(window.localStorage.getItem('cardData'));
+    if(storage === null || (Array.isArray(storage) && storage.length < 1)){
+      <Redirect to='/nodata'/>
+      history.push('/nodata')
+      console.log(1);
+      return
+    }else{
+      <Redirect  to='/data'/>
+      history.push('/data')
+      console.log(22);
+      return
+    }
+    
+  }, [history])
+
   useEffect(() => {
     if (window !== 'undefined') {
-      if (JSON.parse(window.localStorage.getItem('cardData')) === null) {
+      const storage = JSON.parse(window.localStorage.getItem('cardData'));
+      if (storage === null || (Array.isArray(storage) && storage.length < 1)) {
         let startCount = Math.floor(Math.random() * data.length + 1);
         let endCount = Math.floor(Math.random() * data.length + 1);
         while (

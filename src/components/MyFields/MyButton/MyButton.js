@@ -1,13 +1,12 @@
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/button-has-type */
 import React from 'react';
+import ButtonLoader from '../../animation/ButtonLoader/ButtonLoader';
 import './MyButton.css';
 
 function MyButton(props) {
   return (
     <div>
       <button className="continueButton" {...props}>
-        {props.children}
+        {!props.isLoading ? 'Continue' : <ButtonLoader/>}
       </button>
     </div>
   );

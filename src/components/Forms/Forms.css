@@ -26,13 +26,10 @@
     width: 48%;
 }
 
-.inputField{
-    margin-bottom: 14px;
-}
-
 .inputBase, .inputBase input{
     border-radius: 12px !important;
     min-height: 40px !important;
+    margin-top: 7px;
 }
 
 @media (max-width: 345px){
@@ -46,7 +43,7 @@
 }
 
 .shippingInformation{
-    margin-top: 48px;
+    margin-top: 18px;
 }
 
 .contactInformation{

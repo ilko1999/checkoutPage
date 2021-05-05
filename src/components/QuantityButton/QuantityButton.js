@@ -1,14 +1,13 @@
 import React, { useContext } from 'react';
 import './QuantityButton.css';
 import { ProductContext } from '../../context/ProductProvider';
-import MyButton from '../MyFields/MyButton/MyButton';
 
 function QuantityButton({ item }) {
   const { setProductCount } = useContext(ProductContext);
 
   return (
     <div className="Button">
-      <MyButton
+      <button
         className="decrementButton"
         onClick={() => {
           if (item.count && item.count > 0) {
@@ -19,11 +18,11 @@ function QuantityButton({ item }) {
         }}
       >
         &#45;
-      </MyButton>
+      </button>
 
       <h4>{item.count}</h4>
 
-      <MyButton
+      <button
         className="incrementButton"
         disabled={item.count >= item.quantity}
         onClick={() => {
@@ -31,7 +30,7 @@ function QuantityButton({ item }) {
         }}
       >
         &#43;
-      </MyButton>
+      </button>
     </div>
   );
 }

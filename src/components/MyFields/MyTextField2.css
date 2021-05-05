@@ -13,12 +13,14 @@
 
 .formField i{
     position: absolute;
-    top: 25px;
+    top: 35px;
     left: 12px;
 }
 
 .formField label {
-    font-size: clamp(12px, 2vw, 10px);
+    font-size: clamp(10px, 2vw, 12px);
+    padding-bottom: 7px;
+    color: #4F4F4F;
 }
 
 .formField input{
@@ -28,6 +30,7 @@
     cursor: default;
     outline: none;
     transition: all 200ms ease;
+    font-weight: 500;
 }
 
 
@@ -59,7 +62,7 @@
 
 
 .location .formField i{
-    top: 26px;
+    top: 35px;
 }
 
 input:focus{
@@ -73,6 +76,8 @@ input:focus{
 
 .formField p{
     color: rgb(224, 44, 44);
-    font-size: clamp(12px, 2vw,14px);
+    font-size: clamp(8px, 2vw,10px);
     display: flex;
+    margin-bottom: 0px;
+    margin-top: 2px;
 }
